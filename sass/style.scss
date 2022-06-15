@@ -1,28 +1,27 @@
 @import 'global';
+@import 'variables';
 
+// mixins
 
-//vasiables
-$colorL: rgb(39, 36, 36);
-$color-img: rgb(194, 192, 189);
-$headercolor: rgb(212, 212, 209);
-$hovercolor:rgb(255, 255, 255);
-$hovercolor2: rgb(26, 26, 26);
-$colorfooter: rgb(80, 73, 73);
-$breakpoints:(
-    sm : 608px,
-    md : 720px,
-);
+@mixin size ($top, $left, $height){
+    top: $top;
+    left: $left;
+    height: $height;
+}
+@mixin aling ($ct, $ct, $fe){
+    justify-content: $ct;
+    text-align: $ct;
+    display: $fe;
+}
+
 
 header {
     position: fixed;
     width: 100%;
     background-color: $headercolor;
-    top: 0;
-    left: 0;
-    height: 70px;
+    @include size (0,0,70px);
     display: flex;
-    justify-content: space-between;
-     align-items: center;
+    align-items: center;
     .logo{
         width: 100px;
     }
@@ -54,12 +53,6 @@ header {
 
 }
 
-
-
-article{
-    font-size: 26px;
-}
-
 .flex-container {
     padding: 20px;
     display: flex;
@@ -78,11 +71,15 @@ article{
     }
 }
 
+
+article{
+    font-size: 26px;
+}
+
+
 footer{
     background-color: $colorfooter;
-    display: flex;
-    justify-content: center;
-    text-align: center;
+    @include aling(center, center, flex );
     .title-section{
         color: $hovercolor2;
     }
